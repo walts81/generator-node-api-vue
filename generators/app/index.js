@@ -48,6 +48,12 @@ module.exports = class extends Generator {
           message: `What's your email?`,
           default: git.email() || '',
         },
+        {
+          type: 'confirm',
+          name: 'npmInstall',
+          message: 'Would you like the generator to automatically run `npm install`?',
+          default: false,
+        },
       ];
 
       return this.prompt(prompts).then(props => {
@@ -58,7 +64,6 @@ module.exports = class extends Generator {
         props.namePrefix = !!props.githubUser ? '@' + props.githubUser + '/' : '';
         props.fullSlugged = props.namePrefix + props.slugged;
         props.year = new Date().getFullYear().toString();
-        props.VITE_APP_TITLE = '<%= VITE_APP_TITLE %>';
         if (props.author.indexOf(' ') > -1) {
           const names = props.author.split(' ');
           props.firstName = names.length > 0 ? names[0].trim() : '';
@@ -87,6 +92,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall();
+    if (this.props.npmInstall) this.npmInstall();
   }
 };
