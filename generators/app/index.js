@@ -43,7 +43,7 @@ module.exports = class extends Generator {
           default: git.name() || '',
         },
         {
-          name: 'string',
+          type: 'string',
           name: 'email',
           message: `What's your email?`,
           default: git.email() || '',
