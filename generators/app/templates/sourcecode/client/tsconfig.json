@@ -11,6 +11,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["../client/src/**/*"],
-  "exclude": ["../client/public/**/*"]
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["public/**/*", "*.js", "**/*.js"]
 }

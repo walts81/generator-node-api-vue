@@ -1,12 +1,14 @@
-const baseUrl = import.meta.env.VITE_API_BASE + '/api/v1';
+import { Constants } from '@/data';
+
+const getBaseUrl = () => Constants.baseUrl + Constants.apiPath;
 
 const getUrl = (path: string, data?: unknown) => {
-  let result = baseUrl;
-  if (!!path) result += path;
+  let result = getBaseUrl();
+  if (!!path) result += path.startsWith('/') ? path : '/' + path;
   if (!!data) {
     let qs = '';
     for (const key in data) {
-      if (data.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(data, key)) {
         if (!!qs) qs += '&';
         else qs += '?';
         qs += `${key}=${data[key]}`;

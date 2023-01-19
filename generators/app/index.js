@@ -21,19 +21,7 @@ module.exports = class extends Generator {
         {
           type: 'string',
           name: 'desc',
-          message: 'Enter a description for this API:',
-          default: '',
-        },
-        {
-          type: 'string',
-          name: 'githubUser',
-          message: 'Enter your github username:',
-          default: username || '',
-        },
-        {
-          type: 'string',
-          name: 'gitUrl',
-          message: 'Enter the url for your git repo:',
+          message: 'Enter a description for this API (optional):',
           default: '',
         },
         {
@@ -49,9 +37,27 @@ module.exports = class extends Generator {
           default: git.email() || '',
         },
         {
+          type: 'string',
+          name: 'githubUser',
+          message: 'Enter your github username:',
+          default: username || '',
+        },
+        {
+          type: 'string',
+          name: 'gitUrl',
+          message: 'Enter the url for your git repo (optional):',
+          default: '',
+        },
+        {
           type: 'confirm',
           name: 'npmInstall',
           message: 'Would you like the generator to automatically run `npm install`?',
+          default: false,
+        },
+        {
+          type: 'confirm',
+          name: 'gitInit',
+          message: 'Would you like the generator to initialize a git repo?',
           default: false,
         },
       ];
@@ -72,6 +78,7 @@ module.exports = class extends Generator {
           props.firstName = props.author || '';
           props.lastName = '';
         }
+        props.gitUrl = props.gitUrl || '';
         this.props = props;
         this.destinationRoot(props.slugged);
       });
@@ -83,15 +90,18 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('_vscode/'), this.destinationPath('.vscode/'));
     this.fs.copyTpl(this.templatePath('root/*'), this.destinationRoot(), this.props);
     this.fs.copyTpl(this.templatePath('sourcecode/'), this.destinationPath('src/'), this.props);
-    this.fs.copyTpl(this.templatePath('sourcecode/client/.env'), this.destinationPath('src/client/.env'), this.props);
-    this.fs.copyTpl(
-      this.templatePath('sourcecode/client/.env.debug'),
-      this.destinationPath('src/client/.env.debug'),
-      this.props
+    const serverSrcDotFiles = ['.mocharc.js', '.nycrc.json'];
+    serverSrcDotFiles.forEach(x =>
+      this.fs.copyTpl(this.templatePath(`sourcecode/server/${x}`), this.destinationPath(`src/server/${x}`), this.props)
+    );
+    const clientSrcDotFiles = ['.env', '.env.debug', '.env.development', '.mocharc.js', '.nycrc.json'];
+    clientSrcDotFiles.forEach(x =>
+      this.fs.copyTpl(this.templatePath(`sourcecode/client/${x}`), this.destinationPath(`src/client/${x}`), this.props)
     );
   }
 
   install() {
     if (this.props.npmInstall) this.npmInstall();
+    if (this.props.gitInit) this.spawnCommandSync('git', ['init', '--quiet']);
   }
 };

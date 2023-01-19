@@ -1,0 +1,11 @@
+{
+  "include": ["src/client/**/*.ts"],
+  "extension": [".ts"],
+  "exclude": ["**/index.ts", "**/*.d.ts", "**/*.spec.ts", "**/*.js"],
+  "reporter": ["html", "text", "text-summary", "json"],
+  "sourceMap": true,
+  "instrument": true,
+  "cache": false,
+  "all": true,
+  "reportDir": "coverage/client"
+}

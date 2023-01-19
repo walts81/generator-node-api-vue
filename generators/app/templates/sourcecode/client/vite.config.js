@@ -5,6 +5,7 @@ import path from 'path';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
+  console.log(JSON.stringify(env));
   return {
     plugins: [
       vue(),
@@ -14,6 +15,9 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
+    define: {
+      ...env,
+    },
     root: '.',
     resolve: {
       alias: {
@@ -25,6 +29,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: '../../dist/client',
       emptyOutDir: true,
+      minify: env.VITE_ENV === 'production' ? 'esbuild' : false,
     },
     server: {
       port: 8000,

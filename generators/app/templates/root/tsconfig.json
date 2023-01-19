@@ -1,7 +1,7 @@
 {
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "CommonJS"
     }
   },
   "compilerOptions": {
@@ -19,5 +19,5 @@
     "lib": ["dom", "es2015", "es2015.promise"],
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist/**/*.ts", "dist/**/*.js", "coverage", "build.js"]
+  "exclude": ["node_modules", "dist/**/*.ts", "dist/**/*.js", "coverage", "**/*.js"]
 }
