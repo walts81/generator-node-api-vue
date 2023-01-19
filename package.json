@@ -1,6 +1,6 @@
 {
   "name": "@walts81/generator-node-api-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Yo generator for creating a Node API using Express and Vue with TypeScript",
   "homepage": "https://github.com/walts81/generator-node-api-vue",
   "author": {
