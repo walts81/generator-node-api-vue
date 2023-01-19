@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Build ALL",
+      "detail": "npm run clean && npm run build:client && npm run lint:server && npm run build:server && npm run build:server:release"
+    },
+    {
+      "type": "npm",
+      "script": "build:client",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Build Client",
+      "detail": "vite build src/client"
+    },
+    {
+      "type": "npm",
+      "script": "build:server",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Build Server",
+      "detail": "node build.js build"
+    },
+    {
+      "type": "npm",
+      "script": "vue:dev",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Debug Vue",
+      "detail": "npx vite dev src/client --mode debug"
+    },
+    {
+      "type": "npm",
+      "script": "test:server",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "Run Server Tests",
+      "detail": "TS_NODE_FILES=true TS_NODE_PROJECT=src/server/tsconfig.json mocha"
+    }
+  ]
+}

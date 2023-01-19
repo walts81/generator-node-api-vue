@@ -1,0 +1,19 @@
+@import 'variables';
+@import '~/node_modules/@walts81/vue-common-components/dist/style.css';
+
+html {
+  height: 100%;
+  width: 100%;
+  body {
+    height: 100%;
+    width: 100%;
+    #app {
+      height: 100%;
+      width: 100%;
+      @media (min-width: 576px) {
+        max-width: 1220px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

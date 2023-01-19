@@ -1,0 +1,92 @@
+{
+  "name": "@walts81/generator-node-api-vue",
+  "version": "1.0.0",
+  "description": "Yo generator for creating a Node API using Express and Vue with TypeScript",
+  "homepage": "https://github.com/walts81/generator-node-api-vue",
+  "author": {
+    "name": "Josh Walters",
+    "email": "josh.walters@outlook.com"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "node",
+    "express",
+    "vue",
+    "typescript",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-config-xo": "^0.27.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "jest": "^26.1.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^1.7.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "underscore.string": "^3.3.6",
+    "yeoman-generator": "^3.1.1",
+    "yosay": "^2.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pretest": "eslint ./generators",
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags",
+    "version-patch": "npm version patch -m \"updated version to %s\"",
+    "version-minor": "npm version minor -m \"updated version to %s\"",
+    "version-major": "npm version major -m \"updated version to %s\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walts81/generator-node-api-vue.git"
+  },
+  "license": "MIT"
+}
