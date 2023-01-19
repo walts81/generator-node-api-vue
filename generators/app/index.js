@@ -78,8 +78,12 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('_vscode/'), this.destinationPath('.vscode/'));
     this.fs.copyTpl(this.templatePath('root/*'), this.destinationRoot(), this.props);
     this.fs.copyTpl(this.templatePath('sourcecode/'), this.destinationPath('src/'), this.props);
-    this.fs.copyTpl(this.templatePath('sourcecode/client/.env'), this.destinationPath('src/'), this.props);
-    this.fs.copyTpl(this.templatePath('sourcecode/client/.env.debug'), this.destinationPath('src/'), this.props);
+    this.fs.copyTpl(this.templatePath('sourcecode/client/.env'), this.destinationPath('src/client/.env'), this.props);
+    this.fs.copyTpl(
+      this.templatePath('sourcecode/client/.env.debug'),
+      this.destinationPath('src/client/.env.debug'),
+      this.props
+    );
   }
 
   install() {
