@@ -7,14 +7,23 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug TypeScript",
+      "name": "Debug API",
       "args": ["src/server/src/app.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
       "env": {
+        "NODE_ENV": "development",
         "TS_NODE_PROJECT": "${workspaceRoot}/src/server/tsconfig.json"
       },
       "sourceMaps": true,
       "cwd": "${workspaceRoot}"
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Debug Vue",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Debug Vue"
     },
     {
       "type": "node",
@@ -39,6 +48,13 @@
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Client/Server",
+      "configurations": ["Debug API", "Debug Vue"],
+      "stopAll": true
     }
   ]
 }
