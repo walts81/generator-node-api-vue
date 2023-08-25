@@ -49,6 +49,16 @@ module.exports = class extends Generator {
           default: '',
         },
         {
+          type: 'list',
+          name: 'debugger',
+          message: 'Which browser would you like to use for debugging?',
+          choices: [
+            { name: 'Chrome', value: 'chrome' },
+            { name: 'MS Edge', value: 'msedge' },
+          ],
+          default: 'chrome',
+        },
+        {
           type: 'confirm',
           name: 'npmInstall',
           message: 'Would you like the generator to automatically run `npm install`?',
@@ -87,7 +97,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copy(this.templatePath('_devcontainer/'), this.destinationPath('.devcontainer/'));
-    this.fs.copy(this.templatePath('_vscode/'), this.destinationPath('.vscode/'));
+    this.fs.copyTpl(this.templatePath('_vscode/'), this.destinationPath('.vscode/'), this.props);
     this.fs.copyTpl(this.templatePath('root/*'), this.destinationRoot(), this.props);
     this.fs.copyTpl(this.templatePath('sourcecode/'), this.destinationPath('src/'), this.props);
     const serverSrcDotFiles = ['.mocharc.js', '.nycrc.json'];

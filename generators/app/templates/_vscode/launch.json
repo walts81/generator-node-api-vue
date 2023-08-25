@@ -3,6 +3,18 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug API + Vue",
+      "configurations": ["Debug API", "Debug Vue"],
+      "stopAll": true,
+      "presentation": {
+        "hidden": false,
+        "group": "build",
+        "order": 1
+      }
+    }
+  ],
   "configurations": [
     {
       "type": "node",
@@ -18,17 +30,17 @@
       "cwd": "${workspaceRoot}"
     },
     {
-      "type": "msedge",
+      "type": "<%= debugger %>",
       "request": "launch",
       "name": "Debug Vue",
       "url": "http://localhost:8000",
-      "webRoot": "${workspaceFolder}",
+      "webRoot": "${workspaceRoot}/src/client",
       "preLaunchTask": "Debug Vue"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Current File",
+      "name": "Debug Current API File",
       "args": ["${relativeFile}"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
       "env": {
@@ -40,7 +52,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Mocha Tests",
+      "name": "Debug API Mocha Tests",
       "program": "${workspaceFolder}/node_modules/.bin/_mocha",
       "env": {
         "TS_NODE_FILES": "true",
@@ -48,13 +60,6 @@
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Debug Client/Server",
-      "configurations": ["Debug API", "Debug Vue"],
-      "stopAll": true
     }
   ]
 }
