@@ -33,4 +33,4 @@ MIT © [Josh Walters]()
 
 [npm-image]: https://img.shields.io/npm/v/@walts81/generator-node-api-vue.svg
 [npm-url]: https://npmjs.org/package/@walts81/generator-node-api-vue
-[ci-image]: https://gitlab.wal7er5.com/yo-generators/generators-node-api-vue/badges/master/pipeline.svg
+[ci-image]: https://gitlab.wal7er5.com/yo-generators/generator-node-api-vue/badges/master/pipeline.svg
