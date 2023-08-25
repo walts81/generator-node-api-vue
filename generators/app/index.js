@@ -50,7 +50,7 @@ module.exports = class extends Generator {
         },
         {
           type: 'list',
-          name: 'debugger',
+          name: 'browser',
           message: 'Which browser would you like to use for debugging?',
           choices: [
             { name: 'Chrome', value: 'chrome' },
@@ -97,7 +97,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copy(this.templatePath('_devcontainer/'), this.destinationPath('.devcontainer/'));
-    this.fs.copyTpl(this.templatePath('_vscode/'), this.destinationPath('.vscode/'), this.props);
+    this.fs.copyTpl(this.templatePath('_vscode/*'), this.destinationPath('.vscode/'), this.props);
     this.fs.copyTpl(this.templatePath('root/*'), this.destinationRoot(), this.props);
     this.fs.copyTpl(this.templatePath('sourcecode/'), this.destinationPath('src/'), this.props);
     const serverSrcDotFiles = ['.mocharc.js', '.nycrc.json'];

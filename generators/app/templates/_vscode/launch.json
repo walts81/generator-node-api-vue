@@ -30,7 +30,7 @@
       "cwd": "${workspaceRoot}"
     },
     {
-      "type": "<%= debugger %>",
+      "type": "<%= browser %>",
       "request": "launch",
       "name": "Debug Vue",
       "url": "http://localhost:8000",
