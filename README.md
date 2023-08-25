@@ -2,7 +2,7 @@
 
 Yo generator for creating a Node API using Express and Vue with TypeScript
 
-[![Build Status][travis-image]][travis-url]
+[![Build Status][ci-image]]()
 [![NPM version][npm-image]][npm-url]
 
 ## Installing NODE-API-VUE
@@ -33,5 +33,5 @@ MIT © [Josh Walters]()
 
 [npm-image]: https://img.shields.io/npm/v/@walts81/generator-node-api-vue.svg
 [npm-url]: https://npmjs.org/package/@walts81/generator-node-api-vue
-[travis-image]: https://travis-ci.com/walts81/generator-node-api-vue.svg?branch=master
-[travis-url]: https://travis-ci.com/walts81/generator-node-api-vue
+[ci-image]: https://gitlab.wal7er5.com/Generators/generators-node-api-vue/badges/master/pipeline.svg
+<!-- [ci-url]: "" -->
