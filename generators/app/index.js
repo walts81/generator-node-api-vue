@@ -3,12 +3,20 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const _ = require('underscore.string');
+const { git } = require('yeoman-generator/lib/actions/user');
+
+const getUsername = email => {
+  if (!!email && email.indexOf('@') > -1) {
+    return email.substr(0, email.indexOf('@'));
+  }
+  return '';
+};
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(`Welcome to the terrific ${chalk.red('@walts81/node-api-vue')} generator!`));
-    
+
     const prompts = [
       {
         type: 'string',
@@ -38,7 +46,7 @@ module.exports = class extends Generator {
         type: 'string',
         name: 'githubUser',
         message: 'Enter your github username:',
-        default: username || '',
+        default: getUsername(git.email()) || '',
       },
       {
         type: 'string',
